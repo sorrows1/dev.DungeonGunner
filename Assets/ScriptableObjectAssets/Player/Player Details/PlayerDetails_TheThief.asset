@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d28aeef2c51db49995bf913a78aa4d, type: 3}
+  m_Name: PlayerDetails_TheThief
+  m_EditorClassIdentifier: 
+  <PlayerCharacterName>k__BackingField: The Thief
+  <PlayerPrefab>k__BackingField: {fileID: 434042689783611380, guid: 14f064f65db2d574ebcb3b4b1356090e, type: 3}
+  <RuntimeAnimatorController>k__BackingField: {fileID: 9100000, guid: fb0cc3b02f662c74f941f11193bb2c27, type: 2}
+  <PlayerHealth>k__BackingField: 80
+  <PlayerMiniMapIcon>k__BackingField: {fileID: 21300000, guid: 3b4fe8b8838c5974fb6ada20ec6bc95a, type: 3}
+  <PlayerHandSprite>k__BackingField: {fileID: 21300000, guid: 8a77f2040ae109e43b3f234cb081aa6b, type: 3}
