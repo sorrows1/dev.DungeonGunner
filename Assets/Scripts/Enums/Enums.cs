@@ -40,5 +40,7 @@ public static class Tags
     public const string frontTilemap = "frontTilemap";
     public const string collisionTilemap = "collisionTilemap";
     public const string minimapTilemap = "minimapTilemap";
+    public const string player = "Player";
+    public const string playerWeapon = "playerWeapon";
 }
 
