@@ -32,7 +32,6 @@ public class MovementByVelocity : MonoBehaviour
 
     void MoveRigidBody(Vector2 moveDirection, float moveSpeed)
     {
-        Debug.Log("called");
         rigidBody2D.velocity = moveDirection * moveSpeed;
     }
 }
