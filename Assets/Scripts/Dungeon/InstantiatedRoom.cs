@@ -1,6 +1,4 @@
 using System;
-using System.Linq;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -31,12 +29,6 @@ public class InstantiatedRoom : MonoBehaviour
         PopulateTilemapMemberVariables();
 
         BlockOffUnusedDoorWays();
-
-        // AddObstaclesAndPreferredPaths();
-
-        // CreateItemObstaclesArray();
-
-        // AddDoorsToRooms();
 
         DisableCollisionTilemapRenderer();
     }
@@ -78,7 +70,11 @@ public class InstantiatedRoom : MonoBehaviour
     {
         room.doorwayList.ForEach((doorway) =>
         {
-            if (doorway.isConnected) return;
+            if (doorway.isConnected)
+            {
+                AddDoorsToDoorway(doorway);
+                return;
+            };
 
             BlockADoorwayOnTilemapLayers(
                 new Tilemap[6] { groundTilemap, decoration1Tilemap, decoration2Tilemap, frontTilemap, collisionTilemap, minimapTilemap },
@@ -125,6 +121,7 @@ public class InstantiatedRoom : MonoBehaviour
             }
         }
     }
+
     void BlockDoorwayVertically(Tilemap tilemap, Doorway doorway)
     {
         Vector2Int startPosition = doorway.doorwayStartCopyPosition;
@@ -146,6 +143,32 @@ public class InstantiatedRoom : MonoBehaviour
                     tilemap.GetTransformMatrix(tileMapToCopyFrom)
                 );
             }
+        }
+    }
+
+    void AddDoorsToDoorway(Doorway doorway)
+    {
+        if (room.roomNodeType.isCorridorEW || room.roomNodeType.isCorridorNS) return;
+        if (doorway.doorPrefab == null) return;
+
+        float tileDistance = Settings.tileSizePixels / Settings.pixelsPerUnit;
+        GameObject door = Instantiate(doorway.doorPrefab, transform);
+
+        if (doorway.orientation == Orientation.north)
+        {
+            door.transform.localPosition = new Vector3(doorway.position.x + tileDistance / 2f, doorway.position.y + tileDistance);
+        }
+        else if (doorway.orientation == Orientation.south)
+        {
+            door.transform.localPosition = new Vector3(doorway.position.x + tileDistance / 2f, doorway.position.y);
+        }
+        else if (doorway.orientation == Orientation.east)
+        {
+            door.transform.localPosition = new Vector3(doorway.position.x + tileDistance, doorway.position.y + tileDistance * 1.25f);
+        }
+        else if (doorway.orientation == Orientation.west)
+        {
+            door.transform.localPosition = new Vector3(doorway.position.x, doorway.position.y + tileDistance * 1.25f);
         }
     }
 
