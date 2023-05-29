@@ -23,7 +23,7 @@ public class InstantiatedRoom : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag != Tags.player || room == GameManager.Instance.CurrentRoom) return;
+        if (other.tag != Tags.player || room == GameManager.Instance.CurrentRoom || other.isTrigger) return;
         room.isPreviouslyVisited = true;
         StaticEventHandler.CallRoomChangeEvent(room);
     }
