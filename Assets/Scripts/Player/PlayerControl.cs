@@ -27,6 +27,11 @@ public class PlayerControl : MonoBehaviour
         moveSpeed = movementDetails.GetMoveSpeed();
     }
 
+    void Start()
+    {
+        SetPlayerAnimationSpeed();
+    }
+
     void Update()
     {
         if (isPlayerRolling) return;
@@ -53,6 +58,11 @@ public class PlayerControl : MonoBehaviour
         RollPlayer();
     }
     #endregion
+
+    void SetPlayerAnimationSpeed()
+    {
+        player.animator.speed = moveSpeed / Settings.baseSpeedForPlayerAnimations;
+    }
 
     AimResult AimWeaponInput()
     {

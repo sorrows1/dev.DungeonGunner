@@ -34,7 +34,7 @@ public class GameResources : MonoBehaviour
     [Tooltip("Sprite-Lit default material")]
     public Material litMaterial;
 
-    [Tooltip("Variable Lit SHader")]
+    [Tooltip("Variable Lit Shader")]
     public Shader variableLitShader;
 
     #if UNITY_EDITOR
