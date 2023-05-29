@@ -16,7 +16,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public Room CurrentRoom { get; private set; }
     Room previousRoom;
     PlayerDetailsSO playerDetails;
-    public Player Player { get; private set;}
+    public Player Player { get; private set; }
 
     GameState gameState;
 
@@ -70,8 +70,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         DungeonBuilder.Instance.GenerateDungeon(dungeonlevelList[currentDungeonListIndex]);
 
-        Vector3 midRoomPosition = new Vector3((CurrentRoom.lowerBounds.x + CurrentRoom.upperBounds.x) / 2f, (CurrentRoom.lowerBounds.y + CurrentRoom.upperBounds.y) / 2f);
+        StaticEventHandler.CallRoomChangeEvent(CurrentRoom);
 
+        Vector3 midRoomPosition = new Vector3((CurrentRoom.lowerBounds.x + CurrentRoom.upperBounds.x) / 2f, (CurrentRoom.lowerBounds.y + CurrentRoom.upperBounds.y) / 2f);
+        
+        // get nearest spawn point in room
         Player.gameObject.transform.position = HelperUtilities.GetSpawnPositionNearestToPlayer(midRoomPosition);
     }
 

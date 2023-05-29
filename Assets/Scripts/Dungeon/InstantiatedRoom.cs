@@ -22,6 +22,12 @@ public class InstantiatedRoom : MonoBehaviour
         roomColliderBounds = GetComponent<BoxCollider2D>().bounds;
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.tag != Tags.player || room == GameManager.Instance.CurrentRoom) return;
+        room.isPreviouslyVisited = true;
+        StaticEventHandler.CallRoomChangeEvent(room);
+    }
+
     public void Initialise(Room _room)
     {
         this.room = _room;

@@ -9,6 +9,6 @@ public class IdleEvent : MonoBehaviour
 
     public void CallIdleEvent()
     {
-        OnIdle.Invoke(this);
+        OnIdle?.Invoke(this);
     }
 }
